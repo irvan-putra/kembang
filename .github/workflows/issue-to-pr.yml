@@ -33,7 +33,7 @@ jobs:
 
       - name: Create changes
         run: |
-          echo "${{ steps.ai_processing.outputs.result }}" > ai-response.txt
+          echo ${{ steps.ai_processing.outputs.result }} > ai-response.txt
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
           git add ai-response.txt
