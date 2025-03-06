@@ -1,0 +1,52 @@
+name: Issue to PR
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: read
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create branch for changes
+        run: |
+          BRANCH_NAME="ai-response/issue-${{ github.event.issue.number }}"
+          git checkout -b $BRANCH_NAME
+
+      - name: Process issue with AI
+        id: ai_processing
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            // Here you would typically call your AI service
+            // For now, we'll just create a placeholder response
+            const aiResponse = `Processed issue #${issue.number}: ${issue.title}`;
+            return aiResponse;
+
+      - name: Create changes
+        run: |
+          echo "${{ steps.ai_processing.outputs.result }}" > ai-response.txt
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add ai-response.txt
+          git commit -m "AI response to issue #${{ github.event.issue.number }}"
+          git push origin HEAD
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          title: "AI Response to Issue #${{ github.event.issue.number }}"
+          body: |
+            This PR was automatically generated in response to #${{ github.event.issue.number }}
+            
+            Original issue: ${{ github.event.issue.title }}
+          branch: ai-response/issue-${{ github.event.issue.number }}
+          base: main 
