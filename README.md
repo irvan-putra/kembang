@@ -1,19 +1,19 @@
 # AI-Powered Issue Processor
 
-This repository automatically processes GitHub issues using AI and creates pull requests with the results.
+AI-written issue-to-PR scaffold. The current workflow formats a placeholder response from issue metadata; it does not call an AI service. Creating a working AI integration remains unfinished.
 
 ## How it Works
 
 1. Create a new issue in this repository
 2. GitHub Actions will automatically:
-   - Process the issue content using AI
+   - Format a placeholder response from the issue title
    - Create a new branch
-   - Apply the AI-generated changes
+   - Write the placeholder response to a file
    - Create a pull request with the changes
 
 ## Usage
 
-Simply create a new issue with your prompt or request. The system will automatically process it and create a pull request with the AI-generated response.
+The workflow is triggered by a new issue. It attempts a branch and pull request containing a placeholder response, not an AI-generated solution. The end-to-end workflow has not been verified in this wording pass.
 
 Each pull request will be linked to its originating issue for easy reference.
 
@@ -22,7 +22,7 @@ Each pull request will be linked to its originating issue for easy reference.
 The automation is handled by GitHub Actions using the following workflow:
 - Triggers on new issue creation
 - Creates a new branch for changes
-- Processes the issue content with AI
+- Formats placeholder text without calling an AI service
 - Creates a pull request with the results
 
 The workflow file can be found in `.github/workflows/issue-to-pr.yml`.
