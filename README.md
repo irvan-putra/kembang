@@ -37,6 +37,6 @@ This is a basic implementation. To make it fully functional, you'll need to:
 
 ## Authorship
 
-The code and documentation in this repository are AI-written. Irvan confirmed their AI-generated origin on 24 November 2026. This is an authorship disclosure, not a claim that he reviewed every file.
+The code and documentation in this repository are AI-written. Irvan confirmed their AI-generated origin on 24 November 2026. This is an authorship disclosure, not a claim that he reviewed every file. The original March 2025 scaffold was attempted with Microsoft VS Code Copilot, per Irvan's recollection on 25 November 2026.
 
-Built with AI assistance (Instinct and others). Not everything has been reviewed by Irvan.
+Built with AI assistance (Instinct, Microsoft VS Code Copilot and others). Not everything has been reviewed by Irvan.
